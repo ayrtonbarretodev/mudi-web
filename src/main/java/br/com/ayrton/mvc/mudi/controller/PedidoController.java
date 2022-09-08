@@ -32,6 +32,6 @@ public class PedidoController {
         }
         Pedido pedido = requisicao.toPedido();
         pedidoService.cadastrar(pedido);
-        return "pedido/formulario";
+        return "redirect:/home";
     }
 }
