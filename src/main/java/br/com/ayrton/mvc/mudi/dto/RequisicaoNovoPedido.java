@@ -1,6 +1,7 @@
 package br.com.ayrton.mvc.mudi.dto;
 
 import br.com.ayrton.mvc.mudi.model.Pedido;
+import br.com.ayrton.mvc.mudi.model.enums.StatusPedido;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,6 +24,7 @@ public class RequisicaoNovoPedido {
         pedido.setNomeProduto(nomeProduto);
         pedido.setUrlImagem(urlImagem);
         pedido.setUrlProduto(urlProduto);
+        pedido.setStatus(StatusPedido.AGUARDANDO);
         return pedido;
     }
 }
