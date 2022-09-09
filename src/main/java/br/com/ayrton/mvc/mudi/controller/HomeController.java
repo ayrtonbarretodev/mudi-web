@@ -23,19 +23,19 @@ public class HomeController {
     }
 
     @GetMapping
-    public String home(Model model, Principal principal){
-        List<Pedido> pedidos = pedidoService.buscarPedidosPorUsuario(principal.getName());
+    public String home(Model model){
+        List<Pedido> pedidos = pedidoService.getAll();
         model.addAttribute("pedidos",pedidos);
         return "home";
     }
 
-    @GetMapping("/{status}")
-    public String porStatus(@PathVariable("status")String status, Model model){
-        List<Pedido> pedidos = pedidoService.buscarPorStatus(StatusPedido.valueOf(status.toUpperCase()));
-        model.addAttribute("pedidos",pedidos);
-        model.addAttribute("status",status);
-        return "home";
-    }
+//    @GetMapping("pedido/{status}")
+//    public String porStatus(@PathVariable("status")String status, Model model, Principal principal){
+//        List<Pedido> pedidos = pedidoService.buscarPorStatusEUsuario(StatusPedido.valueOf(status.toUpperCase()), principal.getName());
+//        model.addAttribute("pedidos",pedidos);
+//        model.addAttribute("status",status);
+//        return "usuario/home";
+//    }
 
     @ExceptionHandler(IllegalArgumentException.class)
     public String onError(){
