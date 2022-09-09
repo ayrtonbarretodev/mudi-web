@@ -1,6 +1,7 @@
 package br.com.ayrton.mvc.mudi.service;
 
 import br.com.ayrton.mvc.mudi.model.Pedido;
+import br.com.ayrton.mvc.mudi.model.User;
 import br.com.ayrton.mvc.mudi.model.enums.StatusPedido;
 import br.com.ayrton.mvc.mudi.repositories.PedidoRepository;
 import org.springframework.stereotype.Service;
@@ -27,8 +28,8 @@ public class PedidoService {
         pedidoRepository.save(pedido);
     }
 
-    public List<Pedido> buscarPorStatus(StatusPedido status){
-        return pedidoRepository.findByStatus(status);
+    public List<Pedido> buscarPorStatusEUsuario(StatusPedido status, String user){
+        return pedidoRepository.findByStatusAndUser(status,user);
     }
 
 }
