@@ -19,6 +19,10 @@ public class PedidoService {
         return pedidoRepository.findAll();
     }
 
+    public List<Pedido> buscarPedidosPorUsuario(String nome){
+        return pedidoRepository.findAllByUser(nome);
+    }
+
     public void cadastrar(Pedido pedido){
         pedidoRepository.save(pedido);
     }
