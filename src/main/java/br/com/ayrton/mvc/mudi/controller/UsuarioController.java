@@ -8,11 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
 import java.util.List;
 
-@Controller("/usuario")
+@Controller()
+@RequestMapping("/usuario")
 public class UsuarioController {
 
     private final PedidoService pedidoService;
@@ -21,7 +23,7 @@ public class UsuarioController {
         this.pedidoService = pedidoService;
     }
 
-    @GetMapping("pedido")
+    @GetMapping("/pedido")
     public String home(Model model, Principal principal){
         List<Pedido> pedidos = pedidoService.buscarPedidosPorUsuario(principal.getName());
         model.addAttribute("pedidos",pedidos);
