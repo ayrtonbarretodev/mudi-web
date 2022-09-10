@@ -4,6 +4,8 @@ import br.com.ayrton.mvc.mudi.model.Pedido;
 import br.com.ayrton.mvc.mudi.model.User;
 import br.com.ayrton.mvc.mudi.model.enums.StatusPedido;
 import br.com.ayrton.mvc.mudi.repositories.PedidoRepository;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,8 +34,8 @@ public class PedidoService {
         return pedidoRepository.findByStatusAndUser(status,user);
     }
 
-    public List<Pedido> buscarPorStatus(StatusPedido status){
-        return pedidoRepository.findByStatus(status);
+    public List<Pedido> buscarPorStatus(StatusPedido status, Pageable sort){
+        return pedidoRepository.findByStatus(status,sort);
     }
 
 }
