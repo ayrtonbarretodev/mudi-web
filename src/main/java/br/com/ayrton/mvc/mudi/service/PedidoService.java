@@ -32,4 +32,8 @@ public class PedidoService {
         return pedidoRepository.findByStatusAndUser(status,user);
     }
 
+    public List<Pedido> buscarPorStatus(StatusPedido status){
+        return pedidoRepository.findByStatus(status);
+    }
+
 }
