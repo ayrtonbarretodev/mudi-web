@@ -26,7 +26,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .antMatchers("/css/**")
+                        .antMatchers("/css/**","/home/**")
                         .permitAll()
                         .anyRequest().authenticated()
                 )
@@ -35,7 +35,10 @@ public class WebSecurityConfig {
                         .defaultSuccessUrl("/usuario/pedido",true)
                         .permitAll()
                 )
-                .logout(logout -> logout.logoutUrl("/logout"))
+                .logout(logout -> {
+                    logout.logoutUrl("/logout")
+                            .logoutSuccessUrl("/home");
+                })
                 .csrf().disable();
         return http.build();
     }
