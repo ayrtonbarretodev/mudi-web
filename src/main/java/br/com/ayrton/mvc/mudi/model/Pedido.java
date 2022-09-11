@@ -1,6 +1,7 @@
 package br.com.ayrton.mvc.mudi.model;
 
 import br.com.ayrton.mvc.mudi.model.enums.StatusPedido;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +23,9 @@ public class Pedido {
     private String descricao;
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
+
+
 }
