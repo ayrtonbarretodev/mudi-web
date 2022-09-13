@@ -9,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PedidoService {
@@ -36,6 +37,10 @@ public class PedidoService {
 
     public List<Pedido> buscarPorStatus(StatusPedido status, Pageable sort){
         return pedidoRepository.findByStatus(status,sort);
+    }
+
+    public Optional<Pedido> buscarPorId(Long id){
+        return pedidoRepository.findById(id);
     }
 
 }
